@@ -17,3 +17,17 @@ module "vpc" {
   private_data_subnet_az1_cidr = var.private_data_subnet_az1_cidr
   private_data_subnet_az2_cidr = var.private_data_subnet_az2_cidr
 }
+
+#create nat gateway 
+module "nat-gateway" {
+  source                     = "../modules/nat-gateway"
+  vpc_id                     = module.vpc.outputs.vpc_id
+  public_subnet_az1_id       = module.vpc.outputs.public_subnet_az1_id
+  public_subnet_az2_id       = module.vpc.outputs.public_subnet_az2_id
+  internet_gateway           = module.vpc.outputs.internet_gateway
+  private_app_subnet_az1_id  = module.vpc.outputs.private_app_subnet_az1_id
+  private_data_subnet_az1_id = module.vpc.outputs.private_data_subnet_az1_id
+  private_app_subnet_az2_id  = module.vpc.outputs.private_app_subnet_az2_id
+  private_data_subnet_az2_id = module.vpc.outputs.private_data_subnet_az2_id
+
+}
