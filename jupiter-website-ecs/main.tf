@@ -1,7 +1,7 @@
 #configure aws provider
 provider "aws" {
   region  = var.region
-  profile = "renmo"
+  profile = "aws-profile"
 }
 
 #create vpc
