@@ -1,7 +1,7 @@
 #configure aws provider
 provider "aws" {
   region  = var.region
-  profile = "aws-profile"
+  profile = "Renmo"
 }
 
 #create vpc
@@ -37,5 +37,11 @@ module "security-groups" {
   source = "../modules/security-groups"
   vpc_id = module.vpc.outputs.vpc_id
 
+}
+
+
+module "ecs_task_execution_role" {
+  source            = "../modules/ecs-task-execution-role"
+  projeproject_name = module.vpc.project_name
 }
 
